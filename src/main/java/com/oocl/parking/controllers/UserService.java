@@ -11,7 +11,7 @@ public class UserService {
 
 
     UserRepository userRepository;
-@Autowired
+    @Autowired
     public UserService(UserRepository userRepository) {
     this.userRepository = userRepository;
     }
@@ -19,6 +19,7 @@ public class UserService {
 
     public User addUser(User user) {
         User saveUser = userRepository.save(user);
+        saveUser.setPassword(String.valueOf((int)(Math.random()*1000000)));
         return saveUser;
     }
 

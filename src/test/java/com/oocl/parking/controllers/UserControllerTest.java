@@ -39,16 +39,16 @@ public class UserControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void should_return_password_123_when_post_a_user() throws Exception{
+    public void should_return_password_123456_when_post_a_user() throws Exception{
         User user=new User();
-        user.setPassword("123");
+        user.setPassword("123456");
         when(userService.addUser(any(User.class))).thenReturn(user);
 
         ResultActions resultActions=mvc.perform(post("/api/v1/users").contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(user)));
 
         resultActions.andExpect(status().isOk())
-        .andExpect(jsonPath("$.password",is("123")));
+        .andExpect(jsonPath("$.password",is("123456")));
     }
 
 

@@ -10,10 +10,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
+import static org.hamcrest.CoreMatchers.is;
 
 
 @RunWith(SpringRunner.class)
@@ -29,9 +30,11 @@ public class UserServiceTest {
         User user=new User("user_1");
         when(userRepository.save(user)).thenReturn(user);
 
-        userService.addUser(user);
+        User saveUser = userService.addUser(user);
 
         verify(userRepository).save(user);
+        assertThat(saveUser.getPassword().length(),is(6));
+
 
     }
 
