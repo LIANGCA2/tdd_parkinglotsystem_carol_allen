@@ -32,7 +32,7 @@ public class UserServiceTest {
         userService.addUser(user);
 
         verify(userRepository).save(user);
-        
+
     }
 
 }
