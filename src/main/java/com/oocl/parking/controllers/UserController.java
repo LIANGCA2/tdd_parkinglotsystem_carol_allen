@@ -15,10 +15,10 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("")
-    public ResponseEntity addUser(@RequestBody User user){
+    public User addUser(@RequestBody User user){
 
-        userService.addUser(user);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        User saveUser = userService.addUser(user);
+        return saveUser;
     }
 
 }

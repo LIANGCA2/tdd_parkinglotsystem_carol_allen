@@ -20,7 +20,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
+import static org.hamcrest.CoreMatchers.is;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 @RunWith(SpringRunner.class)
 @WebMvcTest(UserController.class)
 @EnableSpringDataWebSupport
@@ -38,14 +39,16 @@ public class UserControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void should_return_204_when_post_a_user() throws Exception{
-        User user=mock(User.class);
-       when(userService.addUser(any(User.class))).thenReturn(user);
+    public void should_return_password_123_when_post_a_user() throws Exception{
+        User user=new User();
+        user.setPassword("123");
+        when(userService.addUser(any(User.class))).thenReturn(user);
 
         ResultActions resultActions=mvc.perform(post("/api/v1/users").contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(user)));
 
-        resultActions.andExpect(status().isCreated());
+        resultActions.andExpect(status().isOk())
+        .andExpect(jsonPath("$.password",is("123")));
     }
 
 
