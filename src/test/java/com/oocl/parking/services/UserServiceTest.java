@@ -21,16 +21,16 @@ public class UserServiceTest {
 
     @Test
     public void should_return_a_user_when_call_addUser(){
-
-
         UserService userService = new UserService(userRepository);
-        User user=new User("user_1");
+        User user = new User("username_1");
+
         when(userRepository.save(user)).thenReturn(user);
 
         User saveUser = userService.addUser(user);
 
         verify(userRepository).save(user);
         assertThat(saveUser.getPassword().length(),is(6));
+        assertThat(saveUser.getUsername(),is("username_1"));
 
 
     }

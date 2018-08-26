@@ -41,8 +41,7 @@ public class UserControllerTest {
 
     @Test
     public void should_return_password_123456_when_post_a_user() throws Exception{
-        User user=new User();
-        user.setPassword("123456");
+        User user = new User("name_1", "username_1", "123456", "carol@oocl.com", "18320419687", "下班", "normal");
         when(userService.addUser(any(User.class))).thenReturn(user);
 
         ResultActions resultActions=mvc.perform(post("/api/v1/users").contentType(MediaType.APPLICATION_JSON)

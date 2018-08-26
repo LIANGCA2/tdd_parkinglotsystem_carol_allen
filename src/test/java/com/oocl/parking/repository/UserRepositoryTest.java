@@ -23,8 +23,7 @@ public class UserRepositoryTest {
 
     @Test
     public void should_add_user(){
-        User user = new User("name_1", "username_1", "abc", "carol@oocl.com", "18320419687", "下班", "normal");
-        testEntityManager.persist(user);
+        User user = new User("name_1", "username_1", "123456", "carol@oocl.com", "18320419687", "下班", "normal");
 
         User saveUser=userRepository.save(user);
 
