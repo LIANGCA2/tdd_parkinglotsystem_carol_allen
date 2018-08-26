@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.oocl.parking.entities.User;
 
+import com.oocl.parking.services.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class UserControllerTest {
     private MockMvc mvc;
 
     @MockBean
-    private  UserService userService;
+    private UserService userService;
 
     @Autowired
     private ObjectMapper objectMapper;

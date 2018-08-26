@@ -1,13 +1,10 @@
 package com.oocl.parking.services;
 
-import com.oocl.parking.controllers.UserService;
 import com.oocl.parking.entities.User;
 import com.oocl.parking.repositories.UserRepository;
 import org.junit.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.hamcrest.MatcherAssert.assertThat;
